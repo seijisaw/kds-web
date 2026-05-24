@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDS株式会社 | 御社の「ひとり情シス」に、プロの参謀を</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #028090;
+            --secondary: #00A896;
+            --accent: #02C39A;
+            --navy: #1E2761;
+            --azure-blue: #0078D4;
+            --light: #F5F5F5;
+            --gray: #6B7280;
+            --orange: #FF8C00;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background: white;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: white;
+            padding: 20px 60px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #03D4A8;
+            transform: translateY(-2px);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #2D3A7C 100%);
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(2, 128, 144, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 56px;
+            color: white;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        .scroll-indicator {
+            margin-top: 60px;
+            color: white;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* サービスタブ */
+        .services-section {
+            padding: 80px 60px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 60px;
+        }
+
+        .service-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: white;
+            border: 2px solid #E5E7EB;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            border-color: var(--primary);
+            background: var(--light);
+        }
+
+        .tab-button.active {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+
+        .tab-content {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* サービス共通スタイル */
+        .service-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .service-price {
+            display: inline-block;
+            background: var(--azure-blue);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .service-lead {
+            font-size: 20px;
+            color: var(--navy);
+            font-weight: 500;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 課題提起 */
+        .pain-section {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 60px;
+        }
+
+        .pain-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .pain-item {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+
+        .pain-check {
+            font-size: 20px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .pain-cta {
+            text-align: center;
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 500;
+            margin-top: 16px;
+        }
+
+        /* 提供価値 */
+        .value-section {
+            margin-bottom: 60px;
+        }
+
+        .value-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 20px;
+        }
+
+        .value-card {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 120, 212, 0.15);
+            border-color: var(--primary);
+        }
+
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .value-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .value-desc {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .value-note {
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 16px;
+        }
+
+        /* プロセスフロー */
+        .process-section {
+            margin-bottom: 60px;
+        }
+
+        .process-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 12px;
+            background: white;
+            border: 3px solid var(--azure-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0, 120, 212, 0.15);
+        }
+
+        .step-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.4;
+        }
+
+        .arrow {
+            font-size: 28px;
+            color: var(--azure-blue);
+            margin: 0 -5px;
+            align-self: center;
+            margin-top: -30px;
+        }
+
+        /* 料金表 */
+        .pricing-section {
+            margin-bottom: 60px;
+        }
+
+        .pricing-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .pricing-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+
+        .pricing-header {
+            display: grid;
+            grid-template-columns: 200px repeat(3, 1fr);
+            background: var(--navy);
+            color: white;
+            min-width: 800px;
+        }
+
+        .pricing-header-cell {
+            padding: 20px 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 15px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .pricing-header-cell:first-child {
+            background: rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .pricing-header-cell:last-child {
+            border-right: none;
+        }
+
+        .pricing-header-cell.featured {
+            background: var(--azure-blue);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 6px;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--orange);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .pricing-row {
+            display: grid;
+            grid-template-columns: 200px repeat(3, 1fr);
+            border-bottom: 1px solid #E5E7EB;
+            min-width: 800px;
+        }
+
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-cell {
+            padding: 16px;
+            text-align: center;
+            font-size: 14px;
+            border-right: 1px solid #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pricing-cell:first-child {
+            background: var(--light);
+            font-weight: 700;
+            color: var(--navy);
+            text-align: left;
+            justify-content: flex-start;
+        }
+
+        .pricing-cell:last-child {
+            border-right: none;
+        }
+
+        .pricing-cell.featured {
+            background: #F0F9FF;
+        }
+
+        .price-row {
+            background: rgba(0, 120, 212, 0.03);
+        }
+
+        .price-row .pricing-cell {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--azure-blue);
+            padding: 24px 16px;
+        }
+
+        .price-row .pricing-cell:first-child {
+            font-size: 14px;
+            color: var(--navy);
+        }
+
+        /* 導入対象 */
+        .target-section {
+            margin-bottom: 40px;
+        }
+
+        .target-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .target-box {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .target-box.positive {
+            border-top: 4px solid var(--primary);
+        }
+
+        .target-box.negative {
+            border-top: 4px solid #DC2626;
+        }
+
+        .target-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .target-icon {
+            font-size: 28px;
+            font-weight: 900;
+        }
+
+        .target-box.positive .target-icon {
+            color: var(--primary);
+        }
+
+        .target-box.negative .target-icon {
+            color: #DC2626;
+        }
+
+        .target-box-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .target-list {
+            list-style: none;
+        }
+
+        .target-list li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            font-size: 15px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .target-list li:last-child {
+            border-bottom: none;
+        }
+
+        .target-box.positive .target-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        .target-box.negative .target-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #DC2626;
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        /* CTAセクション */
+        .cta-section {
+            padding: 80px 60px;
+            background: linear-gradient(135deg, var(--navy) 0%, #2D3A7C 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(2, 195, 154, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-subtitle {
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta-description {
+            font-size: 16px;
+            color: #E5E7EB;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
+            color: var(--navy);
+            padding: 20px 48px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 900;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(2, 195, 154, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(2, 195, 154, 0.4);
+            background: #03D4A8;
+        }
+
+        .cta-arrow {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover .cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* 会社概要 */
+        .company-section {
+            padding: 80px 60px;
+            background: white;
+        }
+
+        .company-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .company-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 20px 40px;
+            background: var(--light);
+            padding: 40px;
+            border-radius: 16px;
+        }
+
+        .company-label {
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .company-value {
+            color: #374151;
+        }
+
+        /* フッター */
+        .footer {
+            background: var(--navy);
+            color: white;
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 1024px) {
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .target-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-flow {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header,
+            .hero,
+            .services-section,
+            .cta-section,
+            .company-section,
+            .footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .service-tabs {
+                flex-direction: column;
+            }
+
+            .tab-button {
+                width: 100%;
+            }
+
+            .company-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 30px;
+            }
+
+            .company-label {
+                border-bottom: 2px solid #E5E7EB;
+                padding-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-content">
+           <a href="https://www.kdsco.jp" class="logo">KDS CO., LTD.</a>
+            <nav class="nav">
+                <a href="#business">BUSINESS</a>
+                <a href="#company">COMPANY</a>
+                <a href="#contact" class="contact-btn">Contact us</a> 
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">孤独な IT 担当者を支える<br>二人三脚のパートナー</h1>
+            <p class="hero-subtitle">IT の "判断" を外注するという選択</p>
+            <div class="scroll-indicator">SCROLL DOWN</div>
+        </div>
+    </section>
+
+    <!-- 事業紹介セクション -->
+    <section id="business" class="services-section">
+        <h2 class="section-title">BUSINESS</h2>
+        <p class="section-subtitle">事業紹介</p>
+
+        <!-- サービスタブ -->
+        <div class="service-tabs">
+            <button class="tab-button active" onclick="showTab('advisory')">ITインフラ・アドバイザリー顧問</button>
+            <button class="tab-button" onclick="showTab('azure')">Azure 移行コスト診断</button>
+            <button class="tab-button" onclick="showTab('traditional')">IT インフラサービス</button>
+        </div>
+
+        <!-- タブ1: ITアドバイザリー顧問 -->
+        <div id="advisory" class="tab-content active">
+            <div class="service-header">
+                <div class="service-price">月額5万円から</div>
+                <h3 style="font-size: 32px; font-weight: 900; color: var(--navy); margin-bottom: 20px;">ITインフラ・アドバイザリー顧問</h3>
+                <p class="service-lead">
+                    作業代行ではありません。<br>
+                    IT投資・構成・ベンダー選定における<br>
+                    <strong>「判断・設計・コントロール」</strong>を担う顧問契約です。
+                </p>
+            </div>
+
+            <!-- 課題提起 -->
+            <div class="pain-section">
+                <h4 class="pain-title">こんなお悩み、ありませんか？</h4>
+                <div class="pain-grid">
+                    <div class="pain-item">
+                        <span class="pain-check">☑</span>
+                        <span>ベンダー見積が妥当か分からない</span>
+                    </div>
+                    <div class="pain-item">
+                        <span class="pain-check">☑</span>
+                        <span>IT判断の責任を一人で背負っている</span>
+                    </div>
+                    <div class="pain-item">
+                        <span class="pain-check">☑</span>
+                        <span>クラウド移行を勧められて不安</span>
+                    </div>
+                    <div class="pain-item">
+                        <span class="pain-check">☑</span>
+                        <span>相談相手がいない</span>
+                    </div>
+                </div>
+                <p class="pain-cta">→ ひとつでも当てはまれば対象です</p>
+            </div>
+
+            <!-- 提供価値 -->
+            <div class="value-section">
+                <h4 class="value-title">提供価値</h4>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🛑</div>
+                        <h5 class="value-card-title">ベンダーの<br>言いなりを防ぐ</h5>
+                        <p class="value-desc">不要なスペック・契約を止めます</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🔁</div>
+                        <h5 class="value-card-title">オンプレ×クラウド<br>両対応</h5>
+                        <p class="value-desc">会社に合う「現実解」だけ提示</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💰</div>
+                        <h5 class="value-card-title">コストが<br>結果的に下がる</h5>
+                        <p class="value-desc">顧問料以上の削減実績多数</p>
+                    </div>
+                </div>
+                <p class="value-note">※削減効果を保証するものではありません</p>
+            </div>
+
+            <!-- 料金プラン -->
+            <div class="pricing-section">
+                <h4 class="pricing-title">料金プラン</h4>
+                <div class="pricing-table">
+                    <div class="pricing-header">
+                        <div class="pricing-header-cell">プラン内容</div>
+                        <div class="pricing-header-cell">ライト</div>
+                        <div class="pricing-header-cell featured">
+                            <span class="featured-badge">おすすめ</span>
+                            スタンダード
+                        </div>
+                        <div class="pricing-header-cell">プレミアム</div>
+                    </div>
+                    <div class="pricing-row price-row">
+                        <div class="pricing-cell">月額（税別）</div>
+                        <div class="pricing-cell">5万円</div>
+                        <div class="pricing-cell featured">10万円</div>
+                        <div class="pricing-cell">20万円〜</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">想定顧客</div>
+                        <div class="pricing-cell">判断</div>
+                        <div class="pricing-cell featured">調整・伴走</div>
+                        <div class="pricing-cell">PM代行</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">チャット相談</div>
+                        <div class="pricing-cell">月10件まで</div>
+                        <div class="pricing-cell featured">月30件まで</div>
+                        <div class="pricing-cell">無制限</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">定例MTG</div>
+                        <div class="pricing-cell">月1回・30分</div>
+                        <div class="pricing-cell featured">月1回・60分</div>
+                        <div class="pricing-cell">月2回・60分</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">ベンダー対応</div>
+                        <div class="pricing-cell">助言のみ</div>
+                        <div class="pricing-cell featured">同席・調整</div>
+                        <div class="pricing-cell">主体管理</div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <!-- タブ2: Azure移行コスト診断 -->
+        <div id="azure" class="tab-content">
+            <div class="service-header">
+                <div class="service-price">15万円から</div>
+                <h3 style="font-size: 32px; font-weight: 900; color: var(--navy); margin-bottom: 20px;">Azure移行コスト診断サービス</h3>
+                <p class="service-lead">
+                    OS サポート終了対応の「判断材料」を短期間で提示<br>
+                    クラウド移行の前に、まず正確な診断を。
+                </p>
+            </div>
+
+            <!-- 課題提起 -->
+            <div class="pain-section">
+                <h4 class="pain-title">こんなお悩み、ありませんか？</h4>
+                <div class="pain-grid">
+                    <div class="pain-item">
+                        <span class="pain-check">☑</span>
+                        <span>OS サポート終了で移行判断を急がれている</span>
+                    </div>
+                    <div class="pain-item">
+                        <span class="pain-check">☑</span>
+                        <span>Azure移行後のコストが読めない</span>
+                    </div>
+                    <div class="pain-item">
+                        <span class="pain-check">☑</span>
+                        <span>SIer提案が妥当か判断できない</span>
+                    </div>
+                </div>
+                <p class="pain-cta">→ ひとつでも当てはまれば対象です</p>
+            </div>
+
+            <!-- 提供価値 -->
+            <div class="value-section">
+                <h4 class="value-title">本サービスでできること</h4>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <div class="value-icon">📋</div>
+                        <h5 class="value-card-title">現状環境の<br>整理（As-Is）</h5>
+                        <p class="value-desc">現在のサーバー構成とスペックを可視化</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h5 class="value-card-title">推奨構成<br>（To-Be）</h5>
+                        <p class="value-desc">最適なAzureリソース構成を提案</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💰</div>
+                        <h5 class="value-card-title">月額・年間コストの<br>可視化</h5>
+                        <p class="value-desc">AHUB/RI適用での詳細試算</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- プロセスフロー -->
+            <div class="process-section">
+                <h4 class="process-title">診断から判断まで、明確なステップで進行</h4>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-icon">📋</div>
+                        <div class="step-label">現状<br>ヒアリング</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-icon">🔍</div>
+                        <div class="step-label">環境<br>診断</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-icon">📊</div>
+                        <div class="step-label">最適構成<br>提案</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-icon">💰</div>
+                        <div class="step-label">コスト<br>可視化</div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-icon">✓</div>
+                        <div class="step-label">経営<br>判断</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 料金プラン -->
+            <div class="pricing-section">
+                <h4 class="pricing-title">料金プラン</h4>
+                <div class="pricing-table">
+                    <div class="pricing-header">
+                        <div class="pricing-header-cell">プラン内容</div>
+                        <div class="pricing-header-cell">概算判断プラン</div>
+                        <div class="pricing-header-cell featured">
+                            <span class="featured-badge">主力</span>
+                            稟議提出プラン
+                        </div>
+                        <div class="pricing-header-cell">移行準備プラン</div>
+                    </div>
+                    <div class="pricing-row price-row">
+                        <div class="pricing-cell">価格（税別）</div>
+                        <div class="pricing-cell">15万円</div>
+                        <div class="pricing-cell featured">30万円〜</div>
+                        <div class="pricing-cell">個別見積</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">対象規模</div>
+                        <div class="pricing-cell">1〜5台</div>
+                        <div class="pricing-cell featured">5〜50台</div>
+                        <div class="pricing-cell">50台以上／複雑構成</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">主な用途</div>
+                        <div class="pricing-cell">概算把握</div>
+                        <div class="pricing-cell featured">稟議・社内決裁</div>
+                        <div class="pricing-cell">移行準備</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">現状分析</div>
+                        <div class="pricing-cell">ヒアリングシート</div>
+                        <div class="pricing-cell featured">実測データ分析</div>
+                        <div class="pricing-cell">詳細調査</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">調査方法</div>
+                        <div class="pricing-cell">机上試算のみ</div>
+                        <div class="pricing-cell featured">Azure Migrate</div>
+                        <div class="pricing-cell">個別設計前提</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">コスト試算</div>
+                        <div class="pricing-cell">概算</div>
+                        <div class="pricing-cell featured">AHUB/RI適用比較</div>
+                        <div class="pricing-cell">複数構成比較</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">成果物</div>
+                        <div class="pricing-cell">概算Excel</div>
+                        <div class="pricing-cell featured">診断レポート（PDF）</div>
+                        <div class="pricing-cell">詳細提案書</div>
+                    </div>
+                    <div class="pricing-row">
+                        <div class="pricing-cell">納期目安</div>
+                        <div class="pricing-cell">3営業日</div>
+                        <div class="pricing-cell featured">1〜2週間</div>
+                        <div class="pricing-cell">3週間〜</div>
+                    </div>
+                </div>
+            </div>
+           
+            
+        </div>
+
+        <!-- タブ3: 従来のITインフラサービス -->
+        <div id="traditional" class="tab-content">
+            <div class="service-header">
+                <h3 style="font-size: 32px; font-weight: 900; color: var(--navy); margin-bottom: 20px;">ITインフラ設計・構築・改善サービス</h3>
+                <p class="service-lead">
+                    ITサービスでビジネスを次のレベルへ<br>
+                    中小企業様向けに特化したITインフラの設計、構築、改善サービスを提供しています。
+                </p>
+            </div>
+
+            <!-- 提供価値 -->
+            <div class="value-section">
+                <h4 class="value-title">サービス概要</h4>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🏗️</div>
+                        <h5 class="value-card-title">ITインフラ<br>設計・構築</h5>
+                        <p class="value-desc">お客様のニーズに合わせた最適なIT環境をご提案。安定した運用と効率的なワークフローを実現します。</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🔧</div>
+                        <h5 class="value-card-title">ITインフラ<br>改善</h5>
+                        <p class="value-desc">現在のシステムの問題点を洗い出し、最新の技術を用いてスピーディーに改善。コスト削減と生産性の向上をサポートします。</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🛟</div>
+                        <h5 class="value-card-title">ITサポート</h5>
+                        <p class="value-desc">日々のトラブルに対応する迅速かつ丁寧なサポート。わかりやすい説明で、ITの不安を解消します。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="value-section">
+                <div class="value-grid" style="grid-template-columns: 1fr;">
+                    <div class="value-card">
+                        <div class="value-icon">👥</div>
+                        <h5 class="value-card-title">サポートチームの導入</h5>
+                        <p class="value-desc">経験豊富なプロフェッショナルが、お客様のオフィス内に常駐。直接的なコミュニケーションで即座に問題を解決します。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 40px 0;">
+                <p style="font-size: 18px; color: var(--navy); font-weight: 500; margin-bottom: 24px;">
+                    どんな小さな疑問でも構いません。<br>
+                    私たち「KDS株式会社」は、お客様のIT環境をトータルでサポートいたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section id="contact" class="cta-section">
+        <div class="cta-content">
+            <p class="cta-subtitle">まずは無料IT診断（30分）</p>
+            <h2 class="cta-title">無駄とリスクを可視化します</h2>
+            <p class="cta-description">現状をお聞きし、最適なサービスをご提案いたします</p>
+            <a href="https://www.kdsco.jp/contact-us" class="cta-button">
+                無料相談はお問合せフォームまで。
+                
+            </a>
+        </div>
+    </section>
+
+    <!-- 会社概要 -->
+    <section id="company" class="company-section">
+        <h2 class="section-title">COMPANY</h2>
+        <p class="section-subtitle">会社概要</p>
+        <div class="company-content">
+            <div class="company-grid">
+                <div class="company-label">社名</div>
+                <div class="company-value">KDS株式会社（KDS Co.,Ltd.）</div>
+                
+                <div class="company-label">住所</div>
+                <div class="company-value">〒160-0023<br>東京都新宿区西新宿7-5-5Plaza西新宿UCF406</div>
+                          
+<div class="company-label">代表者</div>
+<div class="company-value">代表取締役 沢村誠治</div>
+                <div class="company-label">お問合せ</div>
+<div class="company-value">enquiry@kdsco.jp</div>
+                               
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/privacy-policy">プライバシーポリシー</a>
+        </div>
+        <p class="footer-copy">© 2022-2026 KDS Co.,Ltd. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScriptでタブ切り替え -->
+    <script>
+        function showTab(tabName) {
+            // すべてのタブコンテンツを非表示
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // すべてのタブボタンを非アクティブ
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // 選択されたタブを表示
+            document.getElementById(tabName).classList.add('active');
+            
+            // 選択されたボタンをアクティブ化
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
